@@ -1,0 +1,35 @@
+body {
+  font-family: 'Source Sans Pro', sans-serif;
+  
+ }
+
+nav {
+  background-color: #4056A1;
+  height: 120px;
+  width: 100%;
+  color: #FFFF;
+  display: flex;
+  justify-content: space-between;
+ }
+
+
+
+.tweet-logo {
+  font-family: 'Bungee', cursive;
+}
+
+
+nav div {
+  padding: 1.5em 1.5em 1.5em 1.5em;
+}
+
+nav .arrow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+}
+
+.arrowcolor {
+  color: red;
+}
