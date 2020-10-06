@@ -3,13 +3,13 @@ $('document').ready(function(){
   let count = 0;
   $("#tweet-text").keyup(function(data) {
     var comment = $("#tweet-text").val();
-    count = 140 - (comment.length );
+    count = 140 - comment.length;
     $(".counter").val(count);
-    if(count <= 0) {
+    if(count < 0) {
       $(".counter").addClass("red");
     }
     else {
-      $(".counter").addClass("black");
+      $(".counter").removeClass("red");
     }
     
   });

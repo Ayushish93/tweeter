@@ -1,0 +1,79 @@
+#tweet-container header {
+  background-image: none;
+  background-color: transparent;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-bottom: 0%;
+  height: 100px;
+  align-items: center;
+  
+}
+#tweet-container header div span {
+  color: black;
+}
+
+
+
+#tweet-container {
+  border: thick solid black;
+  margin-bottom: 1.5em;
+  font-family: 'Source Sans Pro', sans-serif;
+  padding: 10px;
+  
+}
+
+#tweet-container article {
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+}
+
+#tweet-container footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 0.5em;
+  margin-bottom: 1.5em;
+  border-top: thick solid black;
+  
+}
+
+.footer-icons {
+  color: #4056A1;
+  display: flex;
+  flex-grow: 0.1;
+  justify-content: space-evenly;
+}
+
+#tweet-container footer div {
+  padding-top: 1.0em;
+  padding-left: 1.5em;
+  padding-right: 1.5em;
+}
+
+.tweet-id {
+  visibility: hidden;
+}
+
+#tweet-container:hover .tweet-id {
+  visibility: visible;
+  color: #4056A1;
+}
+
+#tweet-container:hover {
+  
+  opacity: 0.6; 
+  box-shadow: 5px 5px #4056A1;
+}
+
+
+.tweet-contact-info {
+  display: flex;
+  align-items: center;
+
+} 
+
+.tweet-contact-name {
+  padding-left: 0.5em;
+}
+  

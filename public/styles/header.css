@@ -1,17 +1,19 @@
-header {
+#header {
   height: 400px;
   width: 100%;
   display: flex;
   justify-content: center; 
   align-items: center;
   flex-direction: column;
-  background-color: cadetblue;
-  background-image: url("https://www.transparenttextures.com/patterns/45-degree-fabric-dark.png");
+  background-color: #eba800;
+  background-image: url("https://www.transparenttextures.com/patterns/asfalt-light.png");
+  color: #FFFF;
+  
   
 }
 
 
-header div {
+#header div {
   margin-top: 0%;
   padding-top: 0%;
 }

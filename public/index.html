@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
     <link rel="stylesheet" href="/styles/header.css" type="text/css" />
     <link rel="stylesheet" href="/styles/new-tweet.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/tweet-container.css" type="text/css" />
     <!-- font awsome -->
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <!-- External JS -->
@@ -34,13 +35,13 @@
       </div>
     </nav>
     <!--  avtar and name -->
-    <header>
+    <header id="header">
       <div>
           <img src="/images/profile-hex.png"> 
       </div>
       
       <div>
-          <h2>Your Name</h2>
+          <h2 >Your Name</h2>
       </div>
     </header>
 
@@ -56,6 +57,32 @@
             <output name="counter" class="counter" for="tweet-text"> <strong >140</strong></output>
           </div>
         </form>
+      </section>
+
+      <!-- container for all tweets -->
+      <section id="tweet-container">
+        <article>
+          <header>
+            <div class="tweet-contact-info">
+              <span> <img src = "https://i.imgur.com/73hZDYK.png"> </span>
+              <span class="tweet-contact-name"> Your Name </span>
+            </div>
+            <div class="tweet-id"> Your ID </div>
+          </header>
+          <article > 
+            <p> You might notice that there is one major component missing to our app still: the tweets! This exercise will have you implementing them with fake data, along with:</p>
+          </article>
+          <footer>
+            <div>
+              <span> 10 Day ago </span>
+            </div>
+            <div class="footer-icons">
+              <span> <i class="fa fa-flag" aria-hidden="true"></i> </span>
+              <span> <i class="fa fa-heart" aria-hidden="true"></i> </span>
+              <span> <i class="fa fa-retweet" aria-hidden="true"></i> </span>
+            </div>
+          </footer>
+        </article>
       </section>
     </main>
   </body>
