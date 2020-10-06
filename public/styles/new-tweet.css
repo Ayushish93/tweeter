@@ -21,6 +21,7 @@
   display: flex;
   justify-content: space-between;
   font-family: 'Bungee', cursive;;
+  padding: 1em 0em 1em 0em;
 }
 
 .new-tweet div button {
