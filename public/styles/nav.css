@@ -10,6 +10,7 @@ nav {
   color: #FFFF;
   display: flex;
   justify-content: space-between;
+
  }
 
 
@@ -32,4 +33,9 @@ nav .arrow {
 
 .arrowcolor {
   color: red;
+}
+
+.navbar-fixed {
+  position: fixed;
+ 
 }
