@@ -6,6 +6,7 @@
 $('document').ready(function(){
 
 
+
 // Fake data taken from initial-tweets.json
 const data = [
   {
@@ -36,7 +37,6 @@ let $tweetdata = $('#tweet-container');
 const renderTweets = function(data) {
   // loops through tweets
   data.forEach((user) => {
-    console.log("user", user);
   // calls createTweetElement for each tweet
     return $tweetdata.append(createTweetElement(user));
   });
@@ -55,7 +55,7 @@ const createTweetElement = function(data) {
       <div class="tweet-id"> ${data['user'].handle} </div>
     </header>
     <article > 
-      <p id="tweetdata">${data['content'].text} </p>
+      <p class="tweetdata">${data['content'].text} </p>
     </article>
     <footer>
       <div>
@@ -75,6 +75,26 @@ const createTweetElement = function(data) {
 renderTweets(data);
 
 
+// ajax post request
+$(function() {
+  const $submitform = $('.submit-form');
+  $submitform.on('submit', function (event) {
 
+    event.preventDefault();
+    var str = $( ".submit-form" ).serialize();
+   
+    $.ajax({
+      type: "POST",
+      url: "/tweets",
+      data: str,
+      success: 'success',
+      
+      
+    })
+    .then(response => {
+      console.log(response);
+    })
+  });
+});
 
 });
