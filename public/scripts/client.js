@@ -3,49 +3,22 @@
  * jQuery is already loaded
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
-$('document').ready(function(){
+$('document').ready(function () {
 
 
+  let $tweetdata = $('#tweet-container');
+  const renderTweets = function (data) {
+    // loops through tweets
+    data.forEach((user) => {
+      // calls createTweetElement for each tweet
+      return $tweetdata.append(createTweetElement(user));
+    });
 
-// Fake data taken from initial-tweets.json
-const data = [
-  {
-    "user": {
-      "name": "Newton",
-      "avatars": "https://i.imgur.com/73hZDYK.png"
-      ,
-      "handle": "@SirIsaac"
-    },
-    "content": {
-      "text": "If I have seen further it is by standing on the shoulders of giants"
-    },
-    "created_at": 1461116232227
-  },
-  {
-    "user": {
-      "name": "Descartes",
-      "avatars": "https://i.imgur.com/nlhLi3I.png",
-      "handle": "@rd" },
-    "content": {
-      "text": "Je pense , donc je suis"
-    },
-    "created_at": 1461113959088
   }
-]
 
-let $tweetdata = $('#tweet-container');
-const renderTweets = function(data) {
-  // loops through tweets
-  data.forEach((user) => {
-  // calls createTweetElement for each tweet
-    return $tweetdata.append(createTweetElement(user));
-  });
-  
-} 
+  const createTweetElement = function (data) {
 
-const createTweetElement = function(data) {
- 
-  return `
+    return `
   <article class="tweeter-new-post">
     <header>
       <div class="tweet-contact-info">
@@ -68,33 +41,61 @@ const createTweetElement = function(data) {
       </div>
     </footer>
   </article>`
-}
+  }
 
+
+
+  //renderTweets(data);
+
+
+  // ajax function to post tweet 
+  $(function () {
+    const $submitform = $('.submit-form');
+    $submitform.on('submit', function (event) {
+
+      event.preventDefault();
+      var str = $(".submit-form").serialize();
+      let counter = $('.counter'); // get counter value
+      let count = Number(counter.val()); // changing it to Number 
+
+      if (count === 140) {
+        alert("You can not submit empty tweet");
+      }
+      else if (count < 0) {
+        alert("You are exceeding the limit, max limit is 140");
+      }
+      else {
+        $.ajax({
+          type: "POST",
+          url: "/tweets",
+          data: str,
+          success: 'success',
+        })
+          .then(response => {
+            console.log("this is response ", response);
+
+            location.reload();   // reloading new tweets
+          });
+      }
+
+
+    });
+  });
+
+  // ajax function to get tweet
+  const loadTweets = function () {
+    $(function () {
+      console.log('Performing ajax call...');
+      $.ajax('http://localhost:8080/tweets', { method: 'GET' })
+        .then(function (resultobj) {
+          console.log('Success: ', resultobj);
+          renderTweets(resultobj.reverse());   // calling rendertweet fun with array obj
+        });
+    });
+  };
+
+  loadTweets();
 
   
-renderTweets(data);
-
-
-// ajax post request
-$(function() {
-  const $submitform = $('.submit-form');
-  $submitform.on('submit', function (event) {
-
-    event.preventDefault();
-    var str = $( ".submit-form" ).serialize();
-   
-    $.ajax({
-      type: "POST",
-      url: "/tweets",
-      data: str,
-      success: 'success',
-      
-      
-    })
-    .then(response => {
-      console.log(response);
-    })
-  });
-});
 
 });
