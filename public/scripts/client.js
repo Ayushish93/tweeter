@@ -4,7 +4,7 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 $('document').ready(function () {
-
+  
 
   let $tweetdata = $('#tweet-container');
   const renderTweets = function (data) {
@@ -14,6 +14,13 @@ $('document').ready(function () {
       return $tweetdata.append(createTweetElement(user));
     });
 
+  }
+
+// function to secure user input through escaping
+  const escape =  function(str) {
+    let div = document.createElement('div');
+    div.appendChild(document.createTextNode(str));
+    return div.innerHTML;
   }
 
   const createTweetElement = function (data) {
@@ -27,8 +34,8 @@ $('document').ready(function () {
       </div>
       <div class="tweet-id"> ${data['user'].handle} </div>
     </header>
-    <article > 
-      <p class="tweetdata">${data['content'].text} </p>
+    <article> 
+      <p class="tweetdata">${escape( data['content'].text)} </p>
     </article>
     <footer>
       <div>
@@ -45,7 +52,7 @@ $('document').ready(function () {
 
 
 
-  //renderTweets(data);
+ 
 
 
   // ajax function to post tweet 
@@ -54,17 +61,20 @@ $('document').ready(function () {
     $submitform.on('submit', function (event) {
 
       event.preventDefault();
-      var str = $(".submit-form").serialize();
+      let str = $(".submit-form").serialize();
       let counter = $('.counter'); // get counter value
       let count = Number(counter.val()); // changing it to Number 
-
+      $('.isa_error span').text("");
       if (count === 140) {
-        alert("You can not submit empty tweet");
+        $('.isa_error span').append("Too short, please respect our arbitrary limit of 1 - 140 characters");
+        $('.isa_error').slideDown('fast');
       }
       else if (count < 0) {
-        alert("You are exceeding the limit, max limit is 140");
+        $('.isa_error span').append("Too long, please respect our arbitrary limit of 1 - 140 characters");
+        $('.isa_error').slideDown('fast');
       }
       else {
+        
         $.ajax({
           type: "POST",
           url: "/tweets",
@@ -75,6 +85,9 @@ $('document').ready(function () {
             console.log("this is response ", response);
 
             location.reload();   // reloading new tweets
+          })
+          .catch(err => {
+            console.log("Error => ", err);
           });
       }
 
@@ -94,8 +107,10 @@ $('document').ready(function () {
     });
   };
 
-  loadTweets();
 
+  $('.isa_error').hide(); // hiding error msg
+  loadTweets();
+  
   
 
 });

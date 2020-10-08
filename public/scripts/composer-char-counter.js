@@ -9,7 +9,9 @@ $('document').ready(function(){
       $(".counter").addClass("red");
     }
     else {
-      $(".counter").removeClass("red");
+      $(".counter").removeClass("red ");
+      $('.isa_error').slideUp('fast');
+      
     }
     
   });

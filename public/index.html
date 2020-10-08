@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="/styles/header.css" type="text/css" />
     <link rel="stylesheet" href="/styles/new-tweet.css" type="text/css" />
     <link rel="stylesheet" href="/styles/tweet-container.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/error-messages.css" type="text/css" />
     <!-- font awsome -->
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <!-- External JS -->
@@ -48,7 +49,12 @@
     <!-- Page-specific (main) content here -->
     <main class="container"> 
       <section class="new-tweet">
-        <h2>Compose Tweet</h2>
+
+        <div class="isa_error">
+          <span> <i class="fas fa-exclamation-triangle"></i> </span>
+        </div>
+
+        
         <form class="submit-form">
           <!-- <label for="tweet-text">What are you humming about?</label> -->
           <textarea name="text" id="tweet-text" placeholder="What are you humming about?"></textarea>
