@@ -2,6 +2,8 @@
 <html lang="en">
   <head>
     <!-- Meta Information -->
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0' />
+    
     <title>Tweeter - Home Page</title>
 
     <!-- External CSS -->
@@ -14,6 +16,7 @@
     <link rel="stylesheet" href="/styles/new-tweet.css" type="text/css" />
     <link rel="stylesheet" href="/styles/tweet-container.css" type="text/css" />
     <link rel="stylesheet" href="/styles/error-messages.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/responsivedesin.css" type="text/css" />
     <!-- font awsome -->
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <!-- External JS -->
@@ -36,60 +39,43 @@
       </div>
     </nav>
     <!--  avtar and name -->
-    <header id="header">
-      <div>
-          <img src="/images/profile-hex.png"> 
-      </div>
-      
-      <div>
-          <h2 >Your Name</h2>
-      </div>
-    </header>
-
-    <!-- Page-specific (main) content here -->
-    <main class="container"> 
-      <section class="new-tweet">
-
-        <div class="isa_error">
-          <span> <i class="fas fa-exclamation-triangle"></i> </span>
-        </div>
-
-        
-        <form class="submit-form">
-          <!-- <label for="tweet-text">What are you humming about?</label> -->
-          <textarea name="text" id="tweet-text" placeholder="What are you humming about?"></textarea>
+   <div class="maincontainer">
+      <div class="maincontainerheader">
+        <header id="header">
           <div>
-            <button type="submit"  class="submit-tweet">Tweet</button>
-            <output name="counter" class="counter" for="tweet-text"> <strong >140</strong></output>
+              <img src="/images/profile-hex.png"> 
           </div>
-        </form>
-      </section>
+          
+          <div>
+              <h2 >Your Name</h2>
+          </div>
+        </header>
+      </div>
 
-      <!-- container for all tweets -->
-      <section id="tweet-container">
-         <!-- <article class="tweeter-new-post">
-          <header>
-            <div class="tweet-contact-info">
-              <span> <img src = "https://i.imgur.com/73hZDYK.png"> </span>
-              <span class="tweet-contact-name"> Your Name </span>
-            </div>
-            <div class="tweet-id"> Your ID </div>
-          </header>
-          <article > 
-            <p class="tweetdata"> </p>
-          </article>
-          <footer>
+      <!-- Page-specific (main) content here -->
+      <main class="container"> 
+        <section class="new-tweet">
+
+          <div class="isa_error">
+            <span> <i class="fas fa-exclamation-triangle"></i> </span>
+          </div>
+
+          
+          <form class="submit-form">
+            <!-- <label for="tweet-text">What are you humming about?</label> -->
+            <textarea name="text" id="tweet-text" placeholder="What are you humming about?"></textarea>
             <div>
-              <span> 10 Day ago </span>
+              <button type="submit"  class="submit-tweet">Tweet</button>
+              <output name="counter" class="counter" for="tweet-text"> <strong >140</strong></output>
             </div>
-            <div class="footer-icons">
-              <span> <i class="fa fa-flag" aria-hidden="true"></i> </span>
-              <span> <i class="fa fa-heart" aria-hidden="true"></i> </span>
-              <span> <i class="fa fa-retweet" aria-hidden="true"></i> </span>
-            </div>
-          </footer>
-        </article>  -->
-      </section>
-    </main>
+          </form>
+        </section>
+
+        <!-- container for all tweets -->
+        <section id="tweet-container">
+          
+        </section>
+      </main>
+    </div>
   </body>
 </html>
