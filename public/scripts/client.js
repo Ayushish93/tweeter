@@ -67,10 +67,19 @@ $('document').ready(function () {
       let str = $(".submit-form").serialize();
       let counter = $('.counter'); // get counter value
       let count = Number(counter.val()); // changing it to Number 
+      let userinput = $('#tweet-text').val();
       $('.isa_error span').text(""); // deleting errpor text to apend the new error
-      if (count === 140) {
-        $('.isa_error span').append("Too short, please respect our arbitrary limit of 1 - 140 characters");
+      
+      if(userinput === ' ') {
+        $('.isa_error span').append("Too short/empty, please respect our arbitrary limit of 1 - 140 characters");
         $('.isa_error').slideDown('fast');
+        $('#tweet-text').val('');
+        $('.counter').val(140);
+      }
+      else if (count === 140) {
+        $('.isa_error span').append("Too short/empty, please respect our arbitrary limit of 1 - 140 characters");
+        $('.isa_error').slideDown('fast');
+        
       }
       else if (count < 0) {
         $('.isa_error span').append("Too long, please respect our arbitrary limit of 1 - 140 characters");
@@ -106,7 +115,6 @@ $('document').ready(function () {
   // ajax function to get tweet
   const loadTweets = function () {
     $(function () {
-      console.log('Performing ajax call...');
       $.ajax('http://localhost:8080/tweets', { method: 'GET' })
         .then(function (resultobj) {
           renderTweets(resultobj.reverse());   // calling rendertweet fun with array obj
