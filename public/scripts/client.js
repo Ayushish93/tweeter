@@ -24,6 +24,39 @@ $('document').ready(function () {
     div.appendChild(document.createTextNode(str));
     return div.innerHTML;
   }
+
+
+  //function to calculate time when post was made
+
+  function getTimeInterval(date) {
+    let seconds = Math.floor((Date.now() - date) / 1000);
+    let unit = "second";
+    let direction = "ago";
+    if (seconds < 0) {
+      seconds = -seconds;
+      direction = "from now";
+    }
+    let value = seconds;
+    if (seconds >= 31536000) {
+      value = Math.floor(seconds / 31536000);
+      unit = "year";
+    } else if (seconds >= 86400) {
+      value = Math.floor(seconds / 86400);
+      unit = "day";
+    } else if (seconds >= 3600) {
+      value = Math.floor(seconds / 3600);
+      unit = "hour";
+    } else if (seconds >= 60) {
+      value = Math.floor(seconds / 60);
+      unit = "minute";
+    }
+    if (value != 1)
+      unit = unit + "s";
+    return value + " " + unit + " " + direction;
+  }
+
+
+  
   
   // function to return new submitted tweet as html
   const createTweetElement = function (data) {
@@ -42,7 +75,7 @@ $('document').ready(function () {
     </article>
     <footer>
       <div>
-        <span> 10 Day ago </span>
+        <span> ${getTimeInterval(data['created_at'])} </span>
       </div>
       <div class="footer-icons">
         <span> <i class="fa fa-flag" aria-hidden="true"></i> </span>
